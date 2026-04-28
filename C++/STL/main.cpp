@@ -97,7 +97,7 @@ void explainPQ(){
     // max heap
     priority_queue<int> pq;
     // min heap
-    priority_queue<int, vector<int>, greater<int>> pq;
+    priority_queue<int, vector<int>, greater<int>> pq2;
 
     /*
         pq.push();
@@ -108,8 +108,8 @@ void explainPQ(){
 void explainSet(){
     // store everything uniquely and sorted fashion
     set<int> st;
-    st.insert();
-    st.emplace();
+    // st.insert();
+    // st.emplace();
 
     // Functionality of insert in vector
     // can be used also, that only increases efficiency
@@ -118,29 +118,29 @@ void explainSet(){
     // empty() and swap() are same as those of above
 
     // {1, 2, 3, 4, 5}
-    auto it = st.find(3);
+    // auto it = st.find(3);
 
     // {1, 2, 3, 4, 5}
-    auto it = st.find(6);
+    // auto it = st.find(6);
 
     // {1, 2, 3, 4, 5}
-    st.erase(5); // erases 5, takes logarithmic time
+    // st.erase(5); // erases 5, takes logarithmic time
 
-    int cnt = st.count(1); // 1 or 0
+    // int cnt = st.count(1); // 1 or 0
 
-    auto it = st.find(3);
-    st.erase(it); // it takes constant time
+    // auto it = st.find(3);
+    // st.erase(it); // it takes constant time
 
     // {1, 2, 3, 4, 5}
-    auto it1 = st.find(2);
-    auto it2 = st.find(4);
-    st.erase(it1, it2); // after erase {1, 4, 5} [first, last)
+    // auto it1 = st.find(2);
+    // auto it2 = st.find(4);
+    // st.erase(it1, it2); // after erase {1, 4, 5} [first, last)
 
     // lower_bound() and upper_bound() function works in same way as it does in vector.
 
-    auto it = st.lower_bound();
+    // auto it = st.lower_bound();
 
-    auto it = st.upper_bound(); 
+    // auto it = st.upper_bound(); 
 }
 
 void explainMultiSet(){
