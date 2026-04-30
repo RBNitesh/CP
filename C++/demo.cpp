@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+typedef long long ll;
 
 int nCr(int n, int r){
     int fact = 1;
@@ -25,11 +26,10 @@ int main(){
             oddCnt++;
     }
 
-    int ans = 0;
+    ll ans = 0;
     for (int x = 0; x <= oddCnt; x+=2){
         int y = k - x;
-        ans += nCr(oddCnt + x - 1, x);
-        ans += nCr(evenCnt + y - 1, y);
+        ans += nCr(oddCnt + x - 1, x) * nCr(evenCnt + y - 1, y);
     }
 
     cout << ans << " ";
