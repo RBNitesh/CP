@@ -1,37 +1,79 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-typedef long long ll;
 
-int nCr(int n, int r){
-    int fact = 1;
-    for (int i = 1; i <= r; i++){
-        fact *= n--;
-        fact /= i;
-    }
-    return fact;
-}
+// 1 -2 23 14 1 -32 4 3
+// 5 -21 -3 4 -14 3 -1
+
+// int compute(int i, int len, bool isPos, vector<int> & vec){
+//     if(i == vec.size()){
+//         return len == 0 ? 0 : -1e9;
+//     }
+
+//     int skip = compute(i + 1, len, isPos, vec);
+//     int take = -1e9;
+
+//     if((isPos && vec[i] < 0) || (!isPos && vec[i] > 0)){
+//         take = max({take, vec[i] + compute(i + 1, len - 1, (vec[i] > 0) ? true : false, vec)});
+//     }
+
+//     return max({take, skip});
+// }
+
+// int solve(vector<int> &vec){
+//     int n = vec.size();
+
+//     int maxPos = 0; // maxlength subsequence ending with positive
+//     int maxNeg = 0; // maxlength subsequence ending with negative 
+
+//     for (int i = 0; i < n; i++){
+//         if(vec[i] > 0){
+//             maxPos = max({maxPos, 1 + maxNeg});
+//         }
+//         else{
+//             maxNeg = max({maxNeg, 1 + maxPos});
+//         }
+//     }
+
+//     int maxLen = max({maxPos, maxNeg});
+
+//     // cout << maxLen << " ";
+
+//     return compute(0, maxLen, false, vec);
+// }
 
 int main(){
-    int l, h, k;
-    cin >> l >> h >> k;
+    int n;
+    cin >> n;
 
-    int evenCnt = (h - l + 1) >> 1;
-    int oddCnt = (h - l + 1) >> 1;
+    vector<int> vec;
 
-    if ((h - l + 1) % 2 != 0)
-    {
-        if (l % 2 == 0)
-            evenCnt++;
-        else
-            oddCnt++;
+    for(int i = 0; i < n; i++){
+        int a;
+        cin >> a;
+        vec.push_back(a);
     }
 
-    ll ans = 0;
-    for (int x = 0; x <= oddCnt; x+=2){
-        int y = k - x;
-        ans += nCr(oddCnt + x - 1, x) * nCr(evenCnt + y - 1, y);
-    }
+    int maxSum = 0;
+    int i = 0;
 
-    cout << ans << " ";
+    while(i < n && vec[i] < 0)
+        i++;
+
+    while(i < n){
+        int maxPos = 0;
+        while(i < n && vec[i] > 0){
+            maxPos = max({maxPos, vec[i]});
+            i++;
+        }
+
+        int maxNeg = -1e9;
+        while(i < n && vec[i] < 0){
+            maxNeg = max({maxNeg, vec[i]});
+            i++;
+        }
+
+        maxSum += maxPos + maxNeg;
+    }
+    cout << maxSum << " ";
     return 0;
 }
