@@ -2,6 +2,7 @@
 using namespace std;
 typedef long long ll;
 
+
 class A{
     public: 
     A(int &a){ // pass by reference
