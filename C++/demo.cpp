@@ -74,6 +74,6 @@ int main(){
 
         maxSum += maxPos + maxNeg;
     }
-    cout << maxSum << " ";
+    cout << maxSum << " " << "$";
     return 0;
 }
