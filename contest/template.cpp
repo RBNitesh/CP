@@ -17,25 +17,27 @@ ll INF2 = LLONG_MAX;
 
 #define f(i, a, b) for (int i = a; i <= b; ++i)
 #define F(j, a, b, k) for (int i = a; i <= b; i += k)
-#define sort(a) sort(begin(a), end(a))
 
 #define si(x) scanf("%d", &x);
+#define push push_back()
+#define pop pop_back()
+#define all(arr) arr.begin(), arr.end()
+
+#define debug(x) cout << #x << x;
+
+ll gcd(ll a, ll b) {return a == 0 ? b : gcd(b % a, a);} 
+
+void solve(){
+    
+}
 
 int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int n;
-    cin >> n;
-
-    vi arr(n+1);
-    f(i,1,n){
-        si(arr[i]);
+    int t;
+    while(t-- > 0){
+        solve();
     }
-    sort(arr);
-    f(i,1,n){
-        cout << arr[i] << " ";
-    }
-    cout << "\n";
 }

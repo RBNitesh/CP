@@ -27,21 +27,17 @@ ll INF2 = LLONG_MAX;
 
 ll gcd(ll a, ll b) {return a == 0 ? b : gcd(b % a, a);} 
 
+void solve(){
+    
+}
+
 int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int n;
-    cin >> n;
-
-    vi arr(n+1);
-    f(i,1,n){
-        si(arr[i]);
+    int t;
+    while(t-- > 0){
+        solve();
     }
-    sort(all(arr));
-    f(i,1,n){
-        cout << arr[i] << " ";
-    }
-    cout << "\n";
 }
