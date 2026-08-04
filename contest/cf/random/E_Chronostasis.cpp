@@ -47,52 +47,20 @@ void solve(){
     int n;
     cin >> n;
 
-    vl b(n);
-    map<ll, ll> freq;
-    for (int i = 0; i < n; ++i){
+    vl b(n+1);
+    for (int i = 1; i <= n; ++i){
         cin >> b[i];
-        freq[b[i]]++;
     }
 
-    if(!freq.count(0)){
-        cout << -1 << "\n";
-        return;
+    sort(rbegin(b) + 2, rend(b));
+
+    int lst = 0;
+    for (int i = 1; i <= n; ++i){
+        cout << lst + b[i] << " \n"[i == n];
+        lst += b[i];
     }
 
-    ll prev_shadow, prev_cnt;
-    ll lst = 0;
-    map<ll, ll> ans;
-    for (auto it : freq){
-        ll curr_shadow = it.first;
-        ll curr_cnt = it.second;
-
-        if(curr_shadow != 0){
-            ll diff = curr_shadow - prev_shadow;
-
-            if(diff % prev_cnt != 0){
-                cout << -1 << "\n";
-                return;
-            }
-
-            ll ele = diff / prev_cnt;
-            if (ele < lst){
-                cout << -1 << "\n";
-                return;
-            }
-
-            ans[prev_shadow] = ele;
-            lst = ele;
-        }
-
-        prev_shadow = curr_shadow;
-        prev_cnt = curr_cnt;
-    }
-
-    ans[prev_shadow] = lst + 1;
-
-    for (int i = 0; i < n; ++i){
-        cout << ans[b[i]] << " \n"[i == n-1];
-    }
+    return;
 }
 
 int main()
