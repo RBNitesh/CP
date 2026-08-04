@@ -1,8 +1,8 @@
 #include<bits/stdc++.h>
-#include <ext/pb_ds/assoc_container.hpp>
+// #include <ext/pb_ds/assoc_container.hpp>
 
 using namespace std;
-using namespace __gnu_pbds;
+// using namespace __gnu_pbds;
 
 using ll = long long;
 using ull = unsigned long long;
@@ -38,13 +38,22 @@ bool chmax(T &a, const T &b) {
     return false;
 }
 
-template<class K, class V>
-using hash_map = gp_hash_table<K, V>;
+// template<class K, class V>
+// using hash_map = gp_hash_table<K, V>;
 
 ll gcd(ll a, ll b) {return a == 0 ? b : gcd(b % a, a);}
 
 void solve(){
+    ll a, b, c;
+    cin >> a >> b >> c;
 
+    ll f = min({a, b, c});
+    ll th = max({a, b, c});
+    ll sc = a + b + c - f - th;
+
+    ll res = min(sc - f, th - sc);
+
+    cout << res << "\n";
 }
 
 int main()
@@ -52,7 +61,11 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    cout << "This is nitesh" << "\n";
+    int t;
+    cin >> t;
+    while(t--){
+        solve();
+    }
 
     return 0;
 }
