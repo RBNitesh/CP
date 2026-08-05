@@ -1,0 +1,89 @@
+#include<bits/stdc++.h>
+// #include <ext/pb_ds/assoc_container.hpp>
+
+using namespace std;
+// using namespace __gnu_pbds;
+
+using ll = long long;
+using ull = unsigned long long;
+using ld = long double;
+
+using pii = pair<int,int>;
+using pll = pair<ll,ll>;
+
+using vi = vector<int>;
+using vl = vector<ll>;
+using vpi = vector<pii>;
+using vpl = vector<pll>;
+
+constexpr int INF = 1e9;
+constexpr ll LINF = 4e18;
+constexpr int MOD = 1'000'000'007;
+
+template<class T>
+bool chmin(T &a, const T &b) {
+    if (b < a) {
+        a = b;
+        return true;
+    }
+    return false;
+}
+
+template<class T>
+bool chmax(T &a, const T &b) {
+    if (b > a) {
+        a = b;
+        return true;
+    }
+    return false;
+}
+
+// template<class K, class V>
+// using hash_map = gp_hash_table<K, V>;
+
+ll gcd(ll a, ll b) {return a == 0 ? b : gcd(b % a, a);}
+
+void solve(){
+    int n;
+    cin >> n;
+
+    vl arr(n+1);
+    for (int i = 1; i <= n; ++i){
+        cin >> arr[i];
+    }
+
+    ll maxi = *max_element(begin(arr), end(arr));
+    vl dp(maxi + 1);
+    ll mx = 0;
+
+    for (int i = 1; i <= n; ++i){
+        if(arr[i] == 1){
+            dp[1] = mx + 1;
+            mx = max(mx, dp[1]);
+        }
+        else{
+            if(dp[arr[i]-1]){
+                dp[arr[i]] = max(dp[arr[i]], dp[arr[i] - 1] + 1);
+                mx = max(mx, dp[arr[i]]);
+            } 
+        }
+    }
+
+    ll ans = *max_element(begin(dp), end(dp));
+    cout << ans << "\n";
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int tc;
+    cin >> tc;
+    while (tc--)
+    {
+        solve();
+    }
+
+    return 0;
+}
