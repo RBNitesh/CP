@@ -41,10 +41,42 @@ bool chmax(T &a, const T &b) {
 // template<class K, class V>
 // using hash_map = gp_hash_table<K, V>;
 
-ll gcd(ll a, ll b) {return a == 0 ? b : gcd(b % a, a);}
+ll gcd(ll a, ll b) { return a == 0 ? b : gcd(b % a, a); }
 
-void solve(){
+ll freq[1001];
+ll prefixSum[1001];
+void solve()
+{
+    int n;
+    cin >> n;
 
+    memset(freq, 0, 10001);
+
+    ll maxFreqEle = 0;
+
+    vl arr(n + 1);
+    for (int i = 1; i <= n; ++i)
+    {
+        cin >> arr[i];
+        freq[arr[i]]++;
+
+        if(freq[arr[i]] > freq[maxFreqEle]){
+            maxFreqEle = arr[i];
+        }
+    }
+
+    ll sum = 0;
+    for (int i = 1; i <= 1000; ++i)
+    {
+        if(i != maxFreqEle){
+            sum += freq[i] * i;
+        }
+        else{
+            sum += min(n - freq[i] + 2, freq[i]) * i;
+        }
+    }
+
+    cout << sum << "\n";
 }
 
 int main()
