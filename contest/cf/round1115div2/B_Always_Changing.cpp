@@ -52,15 +52,15 @@ void solve(){
 
     vector<int> suff0(n + 1), suff1(n+1);
     int c0 = 0, c1 = 0;
-    for (int i = n; i >= 0; --i)
+    for (int i = n-1; i >= 0; --i)
     {
-        suff0[i] = c0;
-        suff1[i] = c1;
-
         if(s[i] == '0')
             c0++;
         else
             c1++;
+
+        suff0[i] = c0;
+        suff1[i] = c1;
     }
 
     int ans = n + 1;
